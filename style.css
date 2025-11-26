@@ -245,19 +245,20 @@ a:hover {
 /* ===== Sections ===== */
 section {
     padding: var(--spacing-xl) 0;
+    position: relative;
+}
+
+section:first-of-type {
+    padding-top: calc(var(--spacing-xl) + 60px);
     min-height: 100vh;
     display: flex;
     align-items: center;
 }
 
-section:first-of-type {
-    padding-top: calc(var(--spacing-xl) + 60px);
-}
-
 /* ===== Hero Section ===== */
 .hero {
     text-align: center;
-    position: relative;
+    width: 100%;
 }
 
 .hero h1 {
@@ -466,6 +467,149 @@ section:first-of-type {
     margin-bottom: var(--spacing-xs);
 }
 
+/* ===== Zerox AI Section ===== */
+.zerox-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto var(--spacing-md);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    animation: float 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 0 20px rgba(102, 126, 234, 0);
+    }
+}
+
+.zerox-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-primary);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.pricing-card {
+    position: relative;
+    padding: var(--spacing-lg);
+    transition: var(--transition-normal);
+}
+
+.pricing-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-color: var(--color-accent-purple);
+    box-shadow: 0 30px 80px rgba(102, 126, 234, 0.3);
+}
+
+.featured-plan {
+    border: 2px solid var(--color-accent-cyan);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(240, 147, 251, 0.1) 100%);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: var(--gradient-secondary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.pricing-header h3 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-sm);
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.pricing-price {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.pricing-price .currency {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-secondary);
+}
+
+.pricing-price .amount {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.pricing-price .period {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    align-self: flex-end;
+    padding-bottom: 0.5rem;
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--spacing-md);
+}
+
+.pricing-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-md);
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.whatsapp-btn {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-2px);
+}
+
 /* ===== Instagram Section ===== */
 .instagram-section {
     text-align: center;
@@ -621,6 +765,20 @@ section:first-of-type {
 
     .showcase-grid {
         grid-template-columns: 1fr;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zerox-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 3rem;
+    }
+
+    .pricing-price .amount {
+        font-size: 2.5rem;
     }
 
     section {

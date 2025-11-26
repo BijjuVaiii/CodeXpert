@@ -174,18 +174,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== Parallax Effect for Hero Section =====
-    const hero = document.querySelector('.hero');
-
-    window.addEventListener('scroll', function () {
-        const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.5;
-
-        if (hero) {
-            hero.style.transform = `translateY(${parallax}px)`;
-        }
-    });
-
     // ===== Add Logo to Navbar =====
     // Copy the generated logo to the project directory
     const logo = document.getElementById('logo');
@@ -242,3 +230,72 @@ function throttle(func, limit) {
         }
     };
 }
+
+// ===== Zerox AI - WhatsApp Integration =====
+document.addEventListener('DOMContentLoaded', function () {
+    const whatsappButtons = document.querySelectorAll('.whatsapp-btn');
+
+    // WhatsApp number for Zerox AI purchase inquiries
+    const whatsappNumber = '9779807060125'; // Nepal: +977 9807060125
+
+    // Custom messages for each plan
+    const planMessages = {
+        basic: `Hello! I'm interested in the *Zerox AI Basic Plan* (₹999/month).
+
+I would like to know more about:
+- Voice Commands
+- Basic Automations
+- Smart Home Control
+
+Please provide me with more details to proceed with the purchase.
+
+Thank you!`,
+
+        pro: `Hello! I'm interested in the *Zerox AI Pro Plan* (₹1,999/month).
+
+I'm excited about the advanced features including:
+- Advanced AI Learning
+- Custom Voice Training
+- Multi-Device Sync
+- Priority Support
+- API Access
+
+I would like to discuss the purchase process and get started.
+
+Thank you!`,
+
+        enterprise: `Hello! I'm interested in the *Zerox AI Enterprise Plan* (₹4,999/month).
+
+I'm looking for enterprise-level features:
+- Unlimited Devices
+- Custom Integrations
+- Dedicated Support
+- Advanced Analytics
+- White Label Option
+
+I would like to schedule a call to discuss our requirements and how Zerox AI can benefit our organization.
+
+Thank you!`
+    };
+
+    whatsappButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const plan = this.getAttribute('data-plan');
+            const message = planMessages[plan] || planMessages.basic;
+
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(message);
+
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            // Open WhatsApp in new tab
+            window.open(whatsappURL, '_blank');
+
+            // Log for analytics
+            console.log(`Zerox AI ${plan.charAt(0).toUpperCase() + plan.slice(1)} Plan - WhatsApp redirect initiated`);
+        });
+    });
+});
